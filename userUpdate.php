@@ -34,7 +34,7 @@ require 'connection.php';
                 <input type="hidden" name="user_id" value="<?=$user['id']?>">
                 <div class="mb-3">
                   <label>Nome</label>
-                  <input type="text" name="nome" value="<?=$user['nome']?>" class="form-control">
+                  <input type="text" name="name" value="<?=$user['name']?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Email</label>
@@ -42,7 +42,7 @@ require 'connection.php';
                 </div>
                 <div class="mb-3">
                   <label>Data de Nascimento</label>
-                  <input type="date" name="data_nascimento" value="<?=$user['data_nascimento']?>" class="form-control">
+                  <input type="date" name="birth" value="<?=$user['birth']?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Senha</label>
