@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conection.php';
+require 'connection.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,7 +37,7 @@ require 'conection.php';
                 <tbody>
                   <?php
                   $sql = 'SELECT * FROM users';
-                  $users = mysqli_query($conection, $sql);
+                  $users = mysqli_query($connection, $sql);
                   if (mysqli_num_rows($users) > 0) {
                     foreach($users as $user) {
                   ?>

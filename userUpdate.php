@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conection.php';
+require 'connection.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,9 +24,9 @@ require 'conection.php';
             <div class="card-body">
               <?php
               if (isset($_GET['id'])) {
-                $user_id = mysqli_real_escape_string($conection, $_GET['id']);
+                $user_id = mysqli_real_escape_string($connection, $_GET['id']);
                 $sql = "SELECT * FROM users WHERE id='$user_id'";
-                $query = mysqli_query($conection, $sql);
+                $query = mysqli_query($connection, $sql);
                 if (mysqli_num_rows($query) > 0) {
                   $user = mysqli_fetch_array($query);
               ?>
