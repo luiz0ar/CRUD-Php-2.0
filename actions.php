@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'conexao.php';
-if (isset($_POST['create_usuario'])) {
+if (isset($_POST['create_user'])) {
 	$name = mysqli_real_escape_string($conexao, trim($_POST['name']));
 	$email = mysqli_real_escape_string($conexao, trim($_POST['email']));
 	$birth = mysqli_real_escape_string($conexao, trim($_POST['birth']));
@@ -9,11 +9,11 @@ if (isset($_POST['create_usuario'])) {
 	$sql = "INSERT INTO usuarios (name, email, birth, password) VALUES ('$name', '$email', '$birth', '$password')";
 	mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) > 0) {
-		$_SESSION['mensagem'] = 'Usuário criado com sucesso.';
+		$_SESSION['message'] = 'Usuário criado com sucesso.';
 		header('Location: index.php');
 		exit;
 	} else {
-		$_SESSION['mensagem'] = 'Usuário não foi criado';
+		$_SESSION['message'] = 'Usuário não foi criado';
 		header('Location: index.php');
 		exit;
 	}
@@ -31,11 +31,11 @@ if (isset($_POST['update_usuario'])) {
 	$sql .= " WHERE id = '$usuario_id'";
 	mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) > 0) {
-		$_SESSION['mensagem'] = 'Usuário atualizado com sucesso';
+		$_SESSION['message'] = 'Usuário atualizado com sucesso';
 		header('Location: index.php');
 		exit;
 	} else {
-		$_SESSION['mensagem'] = 'Usuário não foi atualizado';
+		$_SESSION['message'] = 'Usuário não foi atualizado';
 		header('Location: index.php');
 		exit;
 	}
