@@ -40,8 +40,8 @@ if (isset($_POST['userUpdate'])) {
 		exit;
 	}
 }
-if (isset($_POST['delete_usuario'])) {
-	$user_id = mysqli_real_escape_string($conection, $_POST['delete_usuario']);
+if (isset($_POST['userDelete'])) {
+	$user_id = mysqli_real_escape_string($conection, $_POST['userDelete']);
 	$sql = "DELETE FROM users WHERE id = '$user_id'";
 	mysqli_query($conection, $sql);
 	if (mysqli_affected_rows($conection) > 0) {
