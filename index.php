@@ -47,10 +47,10 @@ require 'connection.php';
                     <td><?=$user['email']?></td>
                     <td><?=date('d/m/Y', strtotime($user['birth']))?></td>
                     <td>
-                      <a href="user-view.php?id=<?=$user['id']?>" class="btn btn-secondary btn-sm"><span class="bi-eye-fill"></span>&nbsp;Visualizar</a>
+                      <a href="userView.php?id=<?=$user['id']?>" class="btn btn-secondary btn-sm"><span class="bi-eye-fill"></span>&nbsp;Visualizar</a>
                       <a href="userUpdate.php?id=<?=$user['id']?>" class="btn btn-success btn-sm"><span class="bi-pencil-fill"></span>&nbsp;Editar</a>
                       <form action="actions.php" method="POST" class="d-inline">
-                        <button onclick="return confirm('Tem certeza que deseja excluir?')" type="submit" name="delete_user" value="<?=$user['id']?>" class="btn btn-danger btn-sm">
+                        <button onclick="return confirm('Tem certeza que deseja excluir?')" type="submit" name="userDelete" value="<?=$user['id']?>" class="btn btn-danger btn-sm">
                           <span class="bi-trash3-fill"></span>&nbsp;Excluir
                         </button>
                       </form>
