@@ -1,14 +1,14 @@
 <?php
 session_start();
-require 'conexao.php';
+require 'conection.php';
 if (isset($_POST['createUser'])) {
-	$name = mysqli_real_escape_string($conexao, trim($_POST['name']));
-	$email = mysqli_real_escape_string($conexao, trim($_POST['email']));
-	$birth = mysqli_real_escape_string($conexao, trim($_POST['birth']));
-	$password = isset($_POST['password']) ? mysqli_real_escape_string($conexao, password_hash(trim($_POST['password']), PASSWORD_DEFAULT)) : '';
+	$name = mysqli_real_escape_string($conection, trim($_POST['name']));
+	$email = mysqli_real_escape_string($conection, trim($_POST['email']));
+	$birth = mysqli_real_escape_string($conection, trim($_POST['birth']));
+	$password = isset($_POST['password']) ? mysqli_real_escape_string($conection, password_hash(trim($_POST['password']), PASSWORD_DEFAULT)) : '';
 	$sql = "INSERT INTO usuarios (name, email, birth, password) VALUES ('$name', '$email', '$birth', '$password')";
-	mysqli_query($conexao, $sql);
-	if (mysqli_affected_rows($conexao) > 0) {
+	mysqli_query($conection, $sql);
+	if (mysqli_affected_rows($conection) > 0) {
 		$_SESSION['message'] = 'Usuário criado com sucesso.';
 		header('Location: index.php');
 		exit;
@@ -19,18 +19,18 @@ if (isset($_POST['createUser'])) {
 	}
 }
 if (isset($_POST['update_usuario'])) {
-	$usuario_id = mysqli_real_escape_string($conexao, $_POST['usuario_id']);
-	$name = mysqli_real_escape_string($conexao, trim($_POST['name']));
-	$email = mysqli_real_escape_string($conexao, trim($_POST['email']));
-	$birth = mysqli_real_escape_string($conexao, trim($_POST['birth']));
-	$password = mysqli_real_escape_string($conexao, trim($_POST['password']));
+	$usuario_id = mysqli_real_escape_string($conection, $_POST['usuario_id']);
+	$name = mysqli_real_escape_string($conection, trim($_POST['name']));
+	$email = mysqli_real_escape_string($conection, trim($_POST['email']));
+	$birth = mysqli_real_escape_string($conection, trim($_POST['birth']));
+	$password = mysqli_real_escape_string($conection, trim($_POST['password']));
 	$sql = "UPDATE usuarios SET name = '$name', email = '$email', birth = '$birth'";
 	if (!empty($password)) {
 		$sql .= ", password='" . password_hash($password, PASSWORD_DEFAULT) . "'";
 	}
 	$sql .= " WHERE id = '$usuario_id'";
-	mysqli_query($conexao, $sql);
-	if (mysqli_affected_rows($conexao) > 0) {
+	mysqli_query($conection, $sql);
+	if (mysqli_affected_rows($conection) > 0) {
 		$_SESSION['message'] = 'Usuário atualizado com sucesso';
 		header('Location: index.php');
 		exit;
@@ -41,10 +41,10 @@ if (isset($_POST['update_usuario'])) {
 	}
 }
 if (isset($_POST['delete_usuario'])) {
-	$usuario_id = mysqli_real_escape_string($conexao, $_POST['delete_usuario']);
+	$usuario_id = mysqli_real_escape_string($conection, $_POST['delete_usuario']);
 	$sql = "DELETE FROM usuarios WHERE id = '$usuario_id'";
-	mysqli_query($conexao, $sql);
-	if (mysqli_affected_rows($conexao) > 0) {
+	mysqli_query($conection, $sql);
+	if (mysqli_affected_rows($conection) > 0) {
 		$_SESSION['message'] = 'Usuário deletado com sucesso';
 		header('Location: index.php');
 		exit;
