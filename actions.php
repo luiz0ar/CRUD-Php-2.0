@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'conection.php';
-if (isset($_POST['createUser'])) {
+if (isset($_POST['userCreate'])) {
 	$name = mysqli_real_escape_string($conection, trim($_POST['name']));
 	$email = mysqli_real_escape_string($conection, trim($_POST['email']));
 	$birth = mysqli_real_escape_string($conection, trim($_POST['birth']));

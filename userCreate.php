@@ -36,7 +36,7 @@
                   <input type="password" name="password" class="form-control">
                 </div>
                 <div class="mb-3">
-                  <button type="submit" name="createUser" class="btn btn-primary">Salvar</button>
+                  <button type="submit" name="userCreate" class="btn btn-primary">Salvar</button>
                 </div>
               </form>
             </div>

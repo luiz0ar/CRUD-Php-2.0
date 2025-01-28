@@ -25,31 +25,31 @@ require 'conection.php';
               <?php
               if (isset($_GET['id'])) {
                 $user_id = mysqli_real_escape_string($conection, $_GET['id']);
-                $sql = "SELECT * FROM usuarios WHERE id='$user_id'";
+                $sql = "SELECT * FROM users WHERE id='$user_id'";
                 $query = mysqli_query($conection, $sql);
                 if (mysqli_num_rows($query) > 0) {
-                  $usuario = mysqli_fetch_array($query);
+                  $user = mysqli_fetch_array($query);
               ?>
               <form action="acoes.php" method="POST">
-                <input type="hidden" name="user_id" value="<?=$usuario['id']?>">
+                <input type="hidden" name="user_id" value="<?=$user['id']?>">
                 <div class="mb-3">
                   <label>Nome</label>
-                  <input type="text" name="nome" value="<?=$usuario['nome']?>" class="form-control">
+                  <input type="text" name="nome" value="<?=$user['nome']?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Email</label>
-                  <input type="text" name="email" value="<?=$usuario['email']?>" class="form-control">
+                  <input type="text" name="email" value="<?=$user['email']?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Data de Nascimento</label>
-                  <input type="date" name="data_nascimento" value="<?=$usuario['data_nascimento']?>" class="form-control">
+                  <input type="date" name="data_nascimento" value="<?=$user['data_nascimento']?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Senha</label>
                   <input type="password" name="senha" class="form-control">
                 </div>
                 <div class="mb-3">
-                  <button type="submit" name="update_usuario" class="btn btn-primary">Salvar</button>
+                  <button type="submit" name="update_user" class="btn btn-primary">Salvar</button>
                 </div>
               </form>
               <?php
