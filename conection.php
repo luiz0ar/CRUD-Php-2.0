@@ -4,5 +4,5 @@ define('USER', 'root');
 define('PASSWORD', 'root');
 define('DB', 'phpcrud');
 
-$conexao = mysqli_connect(HOST, USER, PASSWORD, DB) or die ('Can not connect.');
+$conection = mysqli_connect(HOST, USER, PASSWORD, DB) or die ('Can not connect.');
 ?>
