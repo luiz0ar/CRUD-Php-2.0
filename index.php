@@ -37,7 +37,7 @@ require 'conection.php';
                 <tbody>
                   <?php
                   $sql = 'SELECT * FROM users';
-                  $users = mysqli_query($conexao, $sql);
+                  $users = mysqli_query($conection, $sql);
                   if (mysqli_num_rows($users) > 0) {
                     foreach($users as $user) {
                   ?>
@@ -48,8 +48,8 @@ require 'conection.php';
                     <td><?=date('d/m/Y', strtotime($user['birth']))?></td>
                     <td>
                       <a href="user-view.php?id=<?=$user['id']?>" class="btn btn-secondary btn-sm"><span class="bi-eye-fill"></span>&nbsp;Visualizar</a>
-                      <a href="user-edit.php?id=<?=$user['id']?>" class="btn btn-success btn-sm"><span class="bi-pencil-fill"></span>&nbsp;Editar</a>
-                      <form action="acoes.php" method="POST" class="d-inline">
+                      <a href="userUpdate.php?id=<?=$user['id']?>" class="btn btn-success btn-sm"><span class="bi-pencil-fill"></span>&nbsp;Editar</a>
+                      <form action="actions.php" method="POST" class="d-inline">
                         <button onclick="return confirm('Tem certeza que deseja excluir?')" type="submit" name="delete_user" value="<?=$user['id']?>" class="btn btn-danger btn-sm">
                           <span class="bi-trash3-fill"></span>&nbsp;Excluir
                         </button>

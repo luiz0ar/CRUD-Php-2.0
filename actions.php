@@ -6,7 +6,7 @@ if (isset($_POST['createUser'])) {
 	$email = mysqli_real_escape_string($conection, trim($_POST['email']));
 	$birth = mysqli_real_escape_string($conection, trim($_POST['birth']));
 	$password = isset($_POST['password']) ? mysqli_real_escape_string($conection, password_hash(trim($_POST['password']), PASSWORD_DEFAULT)) : '';
-	$sql = "INSERT INTO usuarios (name, email, birth, password) VALUES ('$name', '$email', '$birth', '$password')";
+	$sql = "INSERT INTO users (name, email, birth, password) VALUES ('$name', '$email', '$birth', '$password')";
 	mysqli_query($conection, $sql);
 	if (mysqli_affected_rows($conection) > 0) {
 		$_SESSION['message'] = 'Usuário criado com sucesso.';
@@ -18,17 +18,17 @@ if (isset($_POST['createUser'])) {
 		exit;
 	}
 }
-if (isset($_POST['update_usuario'])) {
-	$usuario_id = mysqli_real_escape_string($conection, $_POST['usuario_id']);
+if (isset($_POST['userUpdate'])) {
+	$user_id = mysqli_real_escape_string($conection, $_POST['user_id']);
 	$name = mysqli_real_escape_string($conection, trim($_POST['name']));
 	$email = mysqli_real_escape_string($conection, trim($_POST['email']));
 	$birth = mysqli_real_escape_string($conection, trim($_POST['birth']));
 	$password = mysqli_real_escape_string($conection, trim($_POST['password']));
-	$sql = "UPDATE usuarios SET name = '$name', email = '$email', birth = '$birth'";
+	$sql = "UPDATE users SET name = '$name', email = '$email', birth = '$birth'";
 	if (!empty($password)) {
 		$sql .= ", password='" . password_hash($password, PASSWORD_DEFAULT) . "'";
 	}
-	$sql .= " WHERE id = '$usuario_id'";
+	$sql .= " WHERE id = '$user_id'";
 	mysqli_query($conection, $sql);
 	if (mysqli_affected_rows($conection) > 0) {
 		$_SESSION['message'] = 'Usuário atualizado com sucesso';
@@ -41,8 +41,8 @@ if (isset($_POST['update_usuario'])) {
 	}
 }
 if (isset($_POST['delete_usuario'])) {
-	$usuario_id = mysqli_real_escape_string($conection, $_POST['delete_usuario']);
-	$sql = "DELETE FROM usuarios WHERE id = '$usuario_id'";
+	$user_id = mysqli_real_escape_string($conection, $_POST['delete_usuario']);
+	$sql = "DELETE FROM users WHERE id = '$user_id'";
 	mysqli_query($conection, $sql);
 	if (mysqli_affected_rows($conection) > 0) {
 		$_SESSION['message'] = 'Usuário deletado com sucesso';
