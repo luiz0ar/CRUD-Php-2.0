@@ -20,7 +20,7 @@ require 'conection.php';
           <div class="card">
             <div class="card-header">
               <h4> Lista de Usuários
-                <a href="user-create.php" class="btn btn-primary float-end">Adicionar usuário</a>
+                <a href="userCreate.php" class="btn btn-primary float-end">Adicionar usuário</a>
               </h4>
             </div>
             <div class="card-body">
