@@ -49,7 +49,7 @@ require 'connection.php';
                     <td>
                       <a href="userView.php?id=<?=$user['id']?>" class="btn btn-secondary btn-sm"><span class="bi-eye-fill"></span>&nbsp;Visualizar</a>
                       <a href="userUpdate.php?id=<?=$user['id']?>" class="btn btn-success btn-sm"><span class="bi-pencil-fill"></span>&nbsp;Editar</a>
-                      <form action="actions.php" method="POST" class="d-inline">
+                      <form action="actions.php" method="POST"  class="d-inline">
                         <button onclick="return confirm('Tem certeza que deseja excluir?')" type="submit" name="userDelete" value="<?=$user['id']?>" class="btn btn-danger btn-sm">
                           <span class="bi-trash3-fill"></span>&nbsp;Excluir
                         </button>
