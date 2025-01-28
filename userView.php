@@ -32,22 +32,23 @@ require 'connection.php';
                 <div class="mb-3">
                   <label>Nome</label>
                   <p class="form-control">
-                    <?=$user['name'];?>
+                    <?=htmlentities($user['name'], ENT_QUOTES, 'UTF-8');?>
                   </p>
                 </div>
                 <div class="mb-3">
                   <label>Email</label>
                   <p class="form-control">
-                    <?=$user['email'];?>
+                    <?=htmlentities($user['email'], ENT_QUOTES, 'UTF-8');?>
                   </p>
                 </div>
                 <div class="mb-3">
                   <label>Data Nascimento</label>
                   <p class="form-control">
-                    <?=date('d/m/Y', strtotime($user['birth']));?>
+                    <?=htmlentities(date('d/m/Y', strtotime($user['birth'])), ENT_QUOTES, 'UTF-8');?>
                   </p>
                 </div>
                 <?php
+
                 } else {
                   echo "<h5>Usuário não encontrado</h5>";
                 }

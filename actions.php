@@ -2,29 +2,30 @@
 session_start();
 require 'connection.php';
 if (isset($_POST['userCreate'])) {
-	$name = mysqli_real_escape_string($connection, trim($_POST['name']));
-	$email = mysqli_real_escape_string($connection, trim($_POST['email']));
-	$birth = mysqli_real_escape_string($connection, trim($_POST['birth']));
-	$password = isset($_POST['password']) ? mysqli_real_escape_string($connection, password_hash(trim($_POST['password']), PASSWORD_DEFAULT)) : '';
+    $name = mysqli_real_escape_string($connection, trim($_POST['name']));
+    $email = mysqli_real_escape_string($connection, trim($_POST['email']));
+    $birth = mysqli_real_escape_string($connection, trim($_POST['birth']));
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($connection, password_hash(trim($_POST['password']), PASSWORD_DEFAULT)) : '';
     $sql_check_email = "SELECT id FROM users WHERE email = '$email'";
-	$result = mysqli_query($connection, $sql_check_email);
-	if (mysqli_num_rows($result) > 0) {
-		$_SESSION['message'] = 'O e-mail informado já está cadastrado.';
-		header('Location: index.php');
-		exit;
-	}
-	$sql = "INSERT INTO users (name, email, birth, password) VALUES ('$name', '$email', '$birth', '$password')";
-	mysqli_query($connection, $sql);
-	if (mysqli_affected_rows($connection) > 0) {
-		$_SESSION['message'] = 'Usuário criado com sucesso.';
-		header('Location: index.php');
-		exit;
-	} else {
-		$_SESSION['message'] = 'Usuário não foi criado';
-		header('Location: index.php');
-		exit;
-	}
+    $result = mysqli_query($connection, $sql_check_email);
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['message'] = 'O e-mail informado já está cadastrado.';
+        header('Location: userCreate.php');
+        return;
+    }
+    $sql = "INSERT INTO users (name, email, birth, password) VALUES ('$name', '$email', '$birth', '$password')";
+    mysqli_query($connection, $sql);
+    if (mysqli_affected_rows($connection) > 0) {
+        $_SESSION['message'] = 'Usuário criado com sucesso.';
+        header('Location: index.php');
+        return;
+    } else {
+        $_SESSION['message'] = 'Usuário não foi criado';
+        header('Location: index.php');
+        return;
+    }
 }
+
 if (isset($_POST['userUpdate'])) {
 	$user_id = mysqli_real_escape_string($connection, $_POST['user_id']);
 	$name = mysqli_real_escape_string($connection, trim($_POST['name']));
@@ -34,9 +35,9 @@ if (isset($_POST['userUpdate'])) {
     $sql_check_email = "SELECT id FROM users WHERE email = '$email' AND id != '$user_id'";
 	$result = mysqli_query($connection, $sql_check_email);
 	if (mysqli_num_rows($result) > 0) {
-		$_SESSION['message'] = 'O e-mail informado já está cadastrado para outro usuário.';
-		header('Location: index.php');
-		exit;
+		$_SESSION['message'] = 'O e-mail informado já está cadastrado.';
+		header('Location: userUpdate.php');
+		return;
 	}
 	$sql = "UPDATE users SET name = '$name', email = '$email', birth = '$birth'";
 	if (!empty($password)) {
@@ -47,11 +48,11 @@ if (isset($_POST['userUpdate'])) {
 	if (mysqli_affected_rows($connection) > 0) {
 		$_SESSION['message'] = 'Usuário atualizado com sucesso';
 		header('Location: index.php');
-		exit;
+		return;
 	} else {
 		$_SESSION['message'] = 'Usuário não foi atualizado';
 		header('Location: index.php');
-		exit;
+		return;
 	}
 }
 if (isset($_POST['userDelete'])) {
@@ -61,11 +62,11 @@ if (isset($_POST['userDelete'])) {
 	if (mysqli_affected_rows($connection) > 0) {
 		$_SESSION['message'] = 'Usuário deletado com sucesso';
 		header('Location: index.php');
-		exit;
+		return;
 	} else {
 		$_SESSION['message'] = 'Usuário não foi deletado';
 		header('Location: index.php');
-		exit;
+		return;
 	}
 }
 ?>

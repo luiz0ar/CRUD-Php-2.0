@@ -31,21 +31,22 @@ require 'connection.php';
                   $user = mysqli_fetch_array($query);
               ?>
               <form action="actions.php" method="POST">
-                <input type="hidden" name="user_id" value="<?=$user['id']?>">
+                <input type="hidden" name="user_id" value="<?=htmlentities($user['id'], ENT_QUOTES, 'UTF-8')?>">
                 <div class="mb-3">
                   <label>Nome</label>
-                  <input type="text" name="name" value="<?=$user['name']?>" class="form-control">
+                  <input type="text" name="name" value="<?=htmlentities($user['name'], ENT_QUOTES, 'UTF-8')?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Email</label>
-                  <input type="text" name="email" value="<?=$user['email']?>" class="form-control">
+                  <input type="text" name="email" value="<?=htmlentities($user['email'], ENT_QUOTES, 'UTF-8')?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Data de Nascimento</label>
-                  <input type="date" name="birth" value="<?=$user['birth']?>" class="form-control">
+                  <input type="date" name="birth" value="<?=htmlentities($user['birth'], ENT_QUOTES, 'UTF-8')?>" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Senha</label>
+
                   <input type="password" name="senha" class="form-control">
                 </div>
                 <div class="mb-3">
