@@ -21,7 +21,7 @@
               <form action="acoes.php" method="POST">
                 <div class="mb-3">
                   <label>Nome</label>
-                  <input type="text" name="nome" class="form-control">
+                  <input type="text" name="name" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Email</label>
@@ -29,14 +29,14 @@
                 </div>
                 <div class="mb-3">
                   <label>Data de Nascimento</label>
-                  <input type="date" name="data_nascimento" class="form-control">
+                  <input type="date" name="birth" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label>Senha</label>
-                  <input type="password" name="senha" class="form-control">
+                  <input type="password" name="password" class="form-control">
                 </div>
                 <div class="mb-3">
-                  <button type="submit" name="create_usuario" class="btn btn-primary">Salvar</button>
+                  <button type="submit" name="createUser" class="btn btn-primary">Salvar</button>
                 </div>
               </form>
             </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'conexao.php';
-if (isset($_POST['create_user'])) {
+if (isset($_POST['createUser'])) {
 	$name = mysqli_real_escape_string($conexao, trim($_POST['name']));
 	$email = mysqli_real_escape_string($conexao, trim($_POST['email']));
 	$birth = mysqli_real_escape_string($conexao, trim($_POST['birth']));
