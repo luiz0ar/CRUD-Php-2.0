@@ -9,7 +9,7 @@ if (isset($_POST['create_usuario'])) {
 	$sql = "INSERT INTO usuarios (name, email, birth, password) VALUES ('$name', '$email', '$birth', '$password')";
 	mysqli_query($conexao, $sql);
 	if (mysqli_affected_rows($conexao) > 0) {
-		$_SESSION['mensagem'] = 'Usuário criado com sucesso';
+		$_SESSION['mensagem'] = 'Usuário criado com sucesso.';
 		header('Location: index.php');
 		exit;
 	} else {
