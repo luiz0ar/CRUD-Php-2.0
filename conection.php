@@ -1,8 +1,8 @@
 <?php
-define('HOST', '127.0.0.1');
+define('HOST', '10.1.99.17');
 define('USUARIO', 'root');
-define('SENHA', 'root');
-define('DB', 'canalti');
+define('PASSWORD', 'root');
+define('DB', 'phpcrud');
 
-$conexao = mysqli_connect(HOST, USUARIO, SENHA, DB) or die ('Não foi possível conectar');
-?>s
+$conexao = mysqli_connect(HOST, USUARIO, SENHA, DB) or die ('Can not connect.');
+?>
