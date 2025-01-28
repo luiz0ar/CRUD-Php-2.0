@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conexao.php';
+require 'conection.php';
 ?>
 <!doctype html>
 <html lang="en">
