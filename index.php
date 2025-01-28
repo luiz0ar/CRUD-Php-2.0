@@ -20,7 +20,7 @@ require 'conection.php';
           <div class="card">
             <div class="card-header">
               <h4> Lista de Usuários
-                <a href="usuario-create.php" class="btn btn-primary float-end">Adicionar usuário</a>
+                <a href="user-create.php" class="btn btn-primary float-end">Adicionar usuário</a>
               </h4>
             </div>
             <div class="card-body">
@@ -28,7 +28,7 @@ require 'conection.php';
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Nome</th>
+                    <th>name</th>
                     <th>Email</th>
                     <th>Data Nascimento</th>
                     <th>Ações</th>
@@ -36,21 +36,21 @@ require 'conection.php';
                 </thead>
                 <tbody>
                   <?php
-                  $sql = 'SELECT * FROM usuarios';
-                  $usuarios = mysqli_query($conexao, $sql);
-                  if (mysqli_num_rows($usuarios) > 0) {
-                    foreach($usuarios as $usuario) {
+                  $sql = 'SELECT * FROM users';
+                  $users = mysqli_query($conexao, $sql);
+                  if (mysqli_num_rows($users) > 0) {
+                    foreach($users as $user) {
                   ?>
                   <tr>
-                    <td><?=$usuario['id']?></td>
-                    <td><?=$usuario['nome']?></td>
-                    <td><?=$usuario['email']?></td>
-                    <td><?=date('d/m/Y', strtotime($usuario['data_nascimento']))?></td>
+                    <td><?=$user['id']?></td>
+                    <td><?=$user['name']?></td>
+                    <td><?=$user['email']?></td>
+                    <td><?=date('d/m/Y', strtotime($user['birth']))?></td>
                     <td>
-                      <a href="usuario-view.php?id=<?=$usuario['id']?>" class="btn btn-secondary btn-sm"><span class="bi-eye-fill"></span>&nbsp;Visualizar</a>
-                      <a href="usuario-edit.php?id=<?=$usuario['id']?>" class="btn btn-success btn-sm"><span class="bi-pencil-fill"></span>&nbsp;Editar</a>
+                      <a href="user-view.php?id=<?=$user['id']?>" class="btn btn-secondary btn-sm"><span class="bi-eye-fill"></span>&nbsp;Visualizar</a>
+                      <a href="user-edit.php?id=<?=$user['id']?>" class="btn btn-success btn-sm"><span class="bi-pencil-fill"></span>&nbsp;Editar</a>
                       <form action="acoes.php" method="POST" class="d-inline">
-                        <button onclick="return confirm('Tem certeza que deseja excluir?')" type="submit" name="delete_usuario" value="<?=$usuario['id']?>" class="btn btn-danger btn-sm">
+                        <button onclick="return confirm('Tem certeza que deseja excluir?')" type="submit" name="delete_user" value="<?=$user['id']?>" class="btn btn-danger btn-sm">
                           <span class="bi-trash3-fill"></span>&nbsp;Excluir
                         </button>
                       </form>
