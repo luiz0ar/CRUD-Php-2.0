@@ -14,7 +14,7 @@ require 'conection.php';
   <body>
     <?php include('navbar.php'); ?>
     <div class="container mt-4">
-      <?php include('mensagem.php'); ?>
+      <?php include('message.php'); ?>
       <div class="row">
         <div class="col-md-12">
           <div class="card">
