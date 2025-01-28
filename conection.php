@@ -1,5 +1,5 @@
 <?php
-define('HOST', '10.1.99.17');
+define('HOST', '127.0.0.1');
 define('USUARIO', 'root');
 define('PASSWORD', 'root');
 define('DB', 'phpcrud');
