@@ -30,7 +30,7 @@ require 'connection.php';
                 if (mysqli_num_rows($query) > 0) {
                   $user = mysqli_fetch_array($query);
               ?>
-              <form action="acoes.php" method="POST">
+              <form action="actions.php" method="POST">
                 <input type="hidden" name="user_id" value="<?=$user['id']?>">
                 <div class="mb-3">
                   <label>Nome</label>
@@ -49,7 +49,7 @@ require 'connection.php';
                   <input type="password" name="senha" class="form-control">
                 </div>
                 <div class="mb-3">
-                  <button type="submit" name="update_user" class="btn btn-primary">Salvar</button>
+                  <button type="submit" name="userUpdate" class="btn btn-primary">Salvar</button>
                 </div>
               </form>
               <?php
